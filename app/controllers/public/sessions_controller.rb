@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :user_state, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -31,6 +32,15 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    flash[:notice] = 'guestでログインしました'
+    redirect_to root_path
+  end
+
+  protected
 
   def user_state
     @user = User.find_by(email: params[:user][:email])
