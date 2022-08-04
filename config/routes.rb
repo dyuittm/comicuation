@@ -9,9 +9,18 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+  namespace :admin do
+    resources :users, only:[:show, :index, :edit, :update]
+    resources :posts, only:[:show, :index, :edit, :update, :destroy]
+  end
+
   root to: "public/homes#top"
   get '/about' => 'public/homes#about'
-  
-  
+
+  scope module: :public do
+    resources :posts, except:[:new]
+  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
