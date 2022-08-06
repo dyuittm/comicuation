@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  has_one_attached :profile_image
+
   validates :last_name, length: {in: 1..25}, uniqueness: true
   validates :first_name, length: {in: 1..25}, uniqueness: true
   validates :last_name_kana, length: {in: 1..25}, uniqueness: true
@@ -14,6 +16,10 @@ class User < ApplicationRecord
 
   def active_for_authentication?
     super && (is_deleted == false)
+  end
+
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
   def self.guest

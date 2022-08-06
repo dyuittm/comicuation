@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about'
 
   scope module: :public do
-    resources :posts, except:[:new]
+    resources :posts
   end
 
   devise_scope :user do

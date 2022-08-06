@@ -1,0 +1,15 @@
+<% form_with model:@post, local:true da |f| %>
+
+  <div class="field">
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.submit "更新" %>
+  </div>
+<% end %>
