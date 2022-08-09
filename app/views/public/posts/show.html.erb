@@ -1,1 +1,14 @@
-<h2>show</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>show</h2>
+      <div>
+        <%= image_tag @post.image, size:"200x200" %>
+      </div>
+      <div>
+        <%= @post.body %><br>
+        <%= render_with_hashtags(@post.tag_body) %>
+      </div>
+    </div>
+  </div>
+</div>

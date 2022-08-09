@@ -12,13 +12,18 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only:[:show, :index, :edit, :update]
     resources :posts, only:[:show, :index, :edit, :update, :destroy]
+    get '/post/hashtag/:name' => 'posts#hashtag'
+    get '/post/hashtag' => 'posts#hashtag'
   end
 
   root to: "public/homes#top"
   get '/about' => 'public/homes#about'
 
   scope module: :public do
+    resources :users, only:[:show, :index, :edit, :update]
     resources :posts
+    get '/post/hashtag/:name' => 'posts#hashtag'
+    get '/post/hashtag' => 'posts#hashtag'
   end
 
   devise_scope :user do

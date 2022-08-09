@@ -1,15 +1,28 @@
-<% form_with model:@post, local:true da |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>新規登録</h2>
+      <%= form_with model:@post, local: true do |f| %>
 
-  <div class="field">
-    <%= f.file_field :image %>
-  </div>
+        <div class="field">
+          <%= f.file_field :image %>
+        </div>
 
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
+        <div class="field">
+          <%= f.label :body %>
+          <%= f.text_area :body %>
+        </div>
 
-  <div>
-    <%= f.submit "更新" %>
+        <div>
+          <%= f.label :tag_body %>
+          <%= f.text_field :tag_body %>
+        </div>
+
+        <div>
+          <%= f.submit "post" %>
+        </div>
+
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
