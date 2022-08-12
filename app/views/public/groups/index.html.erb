@@ -1,0 +1,11 @@
+<h2>group index</h2>
+<%= link_to "new group", new_group_path, class: "btn btn-outline-primary" %>
+
+<% @groups.each do |group|%>
+  <%= image_tag group.get_group_image, size: '100x100' %>
+  <%= link_to group.name, group_path(group) %>
+  <%= group.introduction %>
+  <!--owner not count-->
+  <%= group.users.count %>
+  <%= group.owner.user_name %>
+<% end %>

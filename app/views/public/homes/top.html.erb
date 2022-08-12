@@ -1,10 +1,25 @@
 <div class="container-fuild">
   <div class="top">
-    <div class="top-text">
-      <%= link_to public_guest_sign_in_path, method: :post do %>
-        ゲストユーザーの方はこちらからログイン=> <i class="far fa-id-badge fa-2x"></i>
-      <% end %>
+    <div class="col-md-12 d-flex justify-content-center pt-5">
+      <%= image_tag "logo2.png", width: "700", height: "150" %>
+    </div>
+    <div class="col-md-7 mx-auto" style="padding-top: 200px;">
+      <div class="row">
+        <%= link_to new_user_registration_path, class: 'btn btn-outline-success btn-block btn-lg mb-4' do %>
+          <i class="fas fa-user-plus"></i>sign up
+        <% end %>
+      </div>
+      <div class="row">
+        <%= link_to new_user_session_path, class: 'btn btn-outline-primary btn-block btn-lg' do %>
+          <i class="fas fa-sign-in-alt"></i>log in
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-end mt-3 text-dark" style="font-size: 18px;">
+        <p class="mr-2">ゲストユーザーの方はこちらからログイン=></p>
+        <%= link_to public_guest_sign_in_path, method: :post do %>
+          <i class="far fa-id-badge fa-2x"></i>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-

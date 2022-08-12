@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     resources :posts
     get '/post/hashtag/:name' => 'posts#hashtag'
     get '/post/hashtag' => 'posts#hashtag'
+    resources :groups do
+      resource :group_users, only: [:create, :destroy]
+    end
   end
 
   devise_scope :user do
