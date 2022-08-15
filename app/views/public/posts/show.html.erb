@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>show</h2>
       <div>
-        <%= image_tag @post.image, size:"200x200" %>
+        <%= image_tag @post.image, size: "400x400" %>
       </div>
       <div>
         <%= @post.body %><br>
         <%= render_with_hashtags(@post.tag_body) %>
+        <%= image_tag @post.user.get_profile_image, class: "rounded-circle", size: "45x45" %>
+        <%= @post.user.user_name %>
       </div>
     </div>
   </div>
