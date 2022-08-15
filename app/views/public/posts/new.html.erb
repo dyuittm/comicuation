@@ -1,28 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>新規登録</h2>
-      <%= form_with model:@post, local: true do |f| %>
-
-        <div class="field">
-          <%= f.file_field :image %>
-        </div>
-
-        <div class="field">
-          <%= f.label :body %>
-          <%= f.text_area :body %>
-        </div>
-
-        <div>
-          <%= f.label :tag_body %>
-          <%= f.text_field :tag_body %>
-        </div>
-
-        <div>
-          <%= f.submit "post" %>
-        </div>
-
-      <% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>New post</h2>
+      <%= render 'form', post: @post %>
     </div>
   </div>
 </div>
