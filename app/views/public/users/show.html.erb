@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="col-md-12 d-flex justify-content-between">
+    <h2 style="padding-left: 480px;">My page</h2>
+    <div>
+      <%= link_to new_post_path do %>
+        <%= image_tag "icon10.png", width: "120", height: "80" %>
+      <% end %>
+      <%= link_to edit_user_path(@user), class: "text-dark" do %>
+        <i class="fas fa-user-cog fa-2x"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-list-container d-flex flex-wrap">
+    <% @user.posts.each do |post| %>
+      <div class="card text-dark shadow-lg" style="width: 300px; margin: 25px 35px 10px 35px;">
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.image, size: '200x200', class: "card-img-top"; %><br>
+        <% end %>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-2">
+              <%= image_tag post.user.get_profile_image, size: '50x50', class: "mt-3 rounded-circle"; %>
+            </div>
+            <div class="col-10">
+              <p class="card-title">
+                <strong><span> <%= truncate(post.body, length: 10) %></span></strong>
+              </p>
+              <span>by <%= post.user.user_name %></span><br>
+              <span><%= l post.created_at %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "all post index", users_path, class: "btn btn-outline-" %>
+</div>

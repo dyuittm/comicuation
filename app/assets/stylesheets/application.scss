@@ -48,3 +48,23 @@ body {
   background-image: url(bg_image.png);
   background-size: cover;
 }
+
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  background: #ffffff;
+  flex: 1;
+}
+
+footer {
+  margin-top: 20px;
+  background: #808080;
+  color: #ffffff;
+  height: 60px;
+  text-align: center;
+}

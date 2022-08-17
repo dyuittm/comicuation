@@ -1,0 +1,27 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-12">
+      <h2>Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= image_tag user.get_profile_image, size: "50x50" %></td>
+              <td><%= user.user_name %></td>
+              <td><%= user.groups.count %></td>
+              <td><%= user.posts.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
