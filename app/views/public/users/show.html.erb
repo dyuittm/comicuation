@@ -1,12 +1,14 @@
 <div class="container">
   <div class="col-md-12 d-flex justify-content-between">
-    <h2 style="padding-left: 480px;">My page</h2>
+    <h2 style="padding-left: 480px;">User page</h2>
     <div>
       <%= link_to new_post_path do %>
         <%= image_tag "icon10.png", width: "120", height: "80" %>
       <% end %>
-      <%= link_to edit_user_path(@user), class: "text-dark" do %>
-        <i class="fas fa-user-cog fa-2x"></i>
+      <% if @user == current_user %>
+        <%= link_to edit_user_path(@user), class: "text-dark" do %>
+          <i class="fas fa-user-cog fa-2x"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -33,5 +35,5 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "all post index", users_path, class: "btn btn-outline-" %>
+  <%= link_to "all post index", users_path, class: "btn btn-outline-primary" %>
 </div>
