@@ -1,11 +1,32 @@
-<h2>group index</h2>
-<%= link_to "new group", new_group_path, class: "btn btn-outline-primary" %>
-
-<% @groups.each do |group|%>
-  <%= image_tag group.get_group_image, size: '100x100' %>
-  <%= link_to group.name, group_path(group) %>
-  <%= group.introduction %>
-  <!--owner not count-->
-  <%= group.users.count %>
-  <%= group.owner.user_name %>
-<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-12">
+      <h2 class="text-center">group index</h2>
+      <%= link_to new_group_path, class: "float-right text-dark mb-3" do %>
+        <i class="fas fa-plus fa-2x"></i>
+      <% end %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>name</th>
+            <th></th>
+            <th></th>
+            <th>owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group|%>
+            <tr>
+              <td><%= image_tag group.get_group_image, size: '100x100', class: "rounded-circle" %></td>
+              <td><%= link_to group.name, group_path(group) %></td>
+              <td><%= group.introduction %></td>
+              <td><%= group.users.count %></td>
+              <td><%= group.owner.user_name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
