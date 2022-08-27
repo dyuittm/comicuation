@@ -6,11 +6,12 @@ class Public::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.all.order(updated_at: :desc)
   end
 
   def show
     @group = Group.find(params[:id])
+    @chats = current_user.chats.new
   end
 
   def create
@@ -43,7 +44,7 @@ class Public::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :introduction, :group_image)
+    params.require(:group).permit(:name, :introduction, :group_image, :user_id [])
   end
 
   def ensure_correct_user

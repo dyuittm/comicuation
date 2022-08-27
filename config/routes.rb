@@ -29,7 +29,6 @@ Rails.application.routes.draw do
     resources :groups do
       resource :group_users, only: [:create, :destroy]
     end
-    get 'chat/:id' => 'chats#show', as: 'chat'
     resources :chats, only: [:create]
   end
 

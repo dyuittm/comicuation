@@ -19,8 +19,43 @@
       <% end %>
       <!-- current_userと@userが一致していない場合に`Begin Chat`を表示 -->
 
-      <% if current_user != @group.users %>
-        <%= link_to 'Begin Chat', chat_path(@group.id) %>
+    </div>
+
+    <div class="col-md-12">
+      <h2>CHAT WITH <%= @group.name %></h2>
+
+      <table class="message table">
+        <thead>
+          <tr>
+            <th style="text-align: left; font-size: 20px;"><%= current_user.user_name %></th>
+            <th style="text-align: right; font-size: 20px;"><%#= @group.users.user_name %></th>
+          </tr>
+        </thead>
+        <% @group.chats.each do |chat| %>
+          <% if chat.group.user_id == group.user.id %>
+          <tbody>
+            <tr>
+              <th>
+                <p style="text-align: left;"><%= chat.message %></p>
+              </th>
+              <th></th>
+            </tr>
+          <% else %>
+            <tr>
+              <th></th>
+              <th>
+                <p style="text-align: right;"><%= chat.message %></p>
+              </th>
+            </tr>
+          </tbody>
+          <% end %>
+        <% end %>
+      </table>
+
+      <%= form_with model: @chat, remote: true do |f| %>
+        <%= f.text_field :message %>
+        <%= f.hidden_field :group_id %>
+        <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
       <% end %>
     </div>
   </div>

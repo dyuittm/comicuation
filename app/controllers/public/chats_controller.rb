@@ -1,22 +1,17 @@
 class Public::ChatsController < ApplicationController
 
-  def show
-    @user = User.find(params[:id])
-    @group = Group.find(params[:id])
-    @chats = @group.chats
-    @chat = Chat.new(group_id: @group.id)
-  end
-
   def create
-    @group = Group.find(params[:id])
-  　@chat = @group.user.chats.new(chat_params)
-  　@chat.saves
+    @group = Group.find_by(id: params[:group_id])
+    @chat = current_user.chats.new(chat_params)
+    @chat.group_id = params[:group_id]
+    if @chat.save
+      redirect_to group_path(@group.id)
+    end
   end
 
   private
-
-  def chat_params
-   params.require(:chat).permit(:message, :group_id, :user_id)
-  end
+    def chat_params
+      params.require(:chat).permit(:message)
+    end
 
 end
