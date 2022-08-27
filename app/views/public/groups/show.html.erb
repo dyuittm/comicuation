@@ -17,8 +17,6 @@
       <% else %>
         <%= link_to 'Join this group', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-outline-success" %>
       <% end %>
-      <!-- current_userと@userが一致していない場合に`Begin Chat`を表示 -->
-
     </div>
 
     <div class="col-md-12">
@@ -28,21 +26,21 @@
         <thead>
           <tr>
             <th style="text-align: left; font-size: 20px;"><%= current_user.user_name %></th>
-            <th style="text-align: right; font-size: 20px;"><%#= @group.users.user_name %></th>
+            <th style="text-align: right; font-size: 20px;"><%#= @group.chats.user.user_name %></th>
           </tr>
         </thead>
         <% @group.chats.each do |chat| %>
-          <% if chat.group.user_id == group.user.id %>
+          <% if chat.user_id == current_user.id %>
           <tbody>
             <tr>
               <th>
                 <p style="text-align: left;"><%= chat.message %></p>
               </th>
-              <th></th>
+              <th><%= image_tag chat.user.get_profile_image, size: "50x50" %></th>
             </tr>
           <% else %>
             <tr>
-              <th></th>
+              <th><%= image_tag chat.current_user.get_profile_image, size: "50x50" %></th>
               <th>
                 <p style="text-align: right;"><%= chat.message %></p>
               </th>
@@ -55,7 +53,7 @@
       <%= form_with model: @chat, remote: true do |f| %>
         <%= f.text_field :message %>
         <%= f.hidden_field :group_id %>
-        <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
+        <%= f.submit "SEND", class: "btn btn-sm btn-success chat-btn" %>
       <% end %>
     </div>
   </div>

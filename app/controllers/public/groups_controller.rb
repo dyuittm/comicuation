@@ -11,7 +11,7 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @chats = current_user.chats.new
+    @chat = current_user.chats.new
   end
 
   def create
