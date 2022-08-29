@@ -10,8 +10,12 @@ class Public::GroupsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    groups = current_user.group_users.pluck(:group_id)
+    group_user = GroupUser.find_by(user_id: @user.id, group_id: groups)
     @group = Group.find(params[:id])
-    @chat = current_user.chats.new
+    @chats = @group.chats
+    @chat = Chat.new(group_id: @group.id)
   end
 
   def create
