@@ -11,8 +11,8 @@
             <th></th>
             <th>name</th>
             <th></th>
-            <th></th>
             <th>owner</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -21,8 +21,8 @@
               <td><%= image_tag group.get_group_image, size: '100x100', class: "rounded-circle" %></td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td><%= group.introduction %></td>
-              <td><%= group.users.count %></td>
               <td><%= group.owner.user_name %></td>
+              <td><%= group.users.count %></td>
             </tr>
           <% end %>
         </tbody>
