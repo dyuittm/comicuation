@@ -23,4 +23,13 @@
       </div>
     <% end %>
   </div>
+  <div class= "hashtag-name">
+    <% @hashtags.sort.reverse.each do |count| %>
+      <% count[1].each do |hashtag| %>
+        <p>
+          <%= link_to "##{hashtag.tag_name} (#{hashtag.posts.count}) 件","/post/hashtag/#{hashtag.tag_name}",data: {"turbolinks" => false} %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
 </div>

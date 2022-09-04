@@ -19,6 +19,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
   end
 
   def show
@@ -34,6 +35,16 @@ class Public::PostsController < ApplicationController
     else
       flash[:alert] = '更新できませんでした'
       render :edit
+    end
+  end
+
+  def hashtag
+    if params[:name].nil?
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
+    else
+      @hashtag = Hashtag.find_by(tag_name: params[:name])
+      @post = @hashtag.posts
+      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.posts.count}
     end
   end
 
