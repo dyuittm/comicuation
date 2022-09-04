@@ -2,13 +2,12 @@
   <div class='row'>
     <div class="col-md-12">
       <h2>Users</h2>
-      <table>
+      <table class="table">
         <thead>
           <tr>
             <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>groups</th>
+            <th>posts</th>
           </tr>
         </thead>
         <tbody>
@@ -16,10 +15,10 @@
             <tr>
               <td>
                 <%= link_to user_path(user) do %>
-                  <%= image_tag user.get_profile_image, size: "50x50" %>
+                  <%= image_tag user.get_profile_image, size: "50x50" %><br>
+                  <%= user.user_name %>
                 <% end %>
               </td>
-              <td><%= user.user_name %></td>
               <td><%= user.groups.count %></td>
               <td><%= user.posts.count %></td>
             </tr>
