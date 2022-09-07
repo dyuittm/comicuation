@@ -12,9 +12,19 @@ class Admin::PostController < ApplicationController
   end
 
   def update
+    if @post.update(post_params)
+      flash[:notice] = '投稿を更新しました'
+      redirect_to admin_post_path(@post)
+    else
+      flash[:alert] = '更新できませんでした'
+      render :edit
+    end
   end
 
   def detroy
+    @post.destroy
+    flash[:notice] = '投稿を削除しました'
+    redirect_to admin_user_path(@post.user)
   end
 
   private
