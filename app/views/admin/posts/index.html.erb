@@ -1,14 +1,6 @@
 <div class="container">
-  <div class="col-md-12 d-flex justify-content-between">
-    <h2 style="padding-left: 480px;">User page</h2>
-    <div>
-      <%= link_to edit_admin_user_path(@user), class: "text-dark" do %>
-        <i class="fas fa-user-cog fa-2x"></i>
-      <% end %>
-    </div>
-  </div>
   <div class="card-list-container d-flex flex-wrap">
-    <% @user.posts.each do |post| %>
+    <% @posts.each do |post| %>
       <div class="card text-dark shadow-lg" style="width: 300px; margin: 25px 35px 10px 35px;">
         <%= link_to admin_post_path(post) do %>
           <%= image_tag post.image, size: '200x200', class: "card-img-top"; %><br>
@@ -22,6 +14,7 @@
               <p class="card-title">
                 <strong><span> <%= truncate(post.body, length: 10) %></span></strong>
               </p>
+              <span><%= render_with_hashtags(post.tag_body) %></span><br>
               <span>by <%= post.user.user_name %></span><br>
               <span><%= l post.created_at %></span>
             </div>

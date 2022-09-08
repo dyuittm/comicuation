@@ -1,4 +1,4 @@
-class Admin::PostController < ApplicationController
+class Admin::PostsController < ApplicationController
   before_action :ensure_correct_admin, only: [:show, :edit, :update, :destroy]
 
   def index
