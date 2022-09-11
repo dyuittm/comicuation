@@ -1,0 +1,29 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-12">
+      <h2 class="text-center">group index</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>name</th>
+            <th></th>
+            <th>owner</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group|%>
+            <tr>
+              <td><%= image_tag group.get_group_image, size: '100x100', class: "rounded-circle" %></td>
+              <td><%= link_to group.name, group_path(group) %></td>
+              <td><%= group.introduction %></td>
+              <td><%= group.owner.user_name %></td>
+              <td><%= group.users.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

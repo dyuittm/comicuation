@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only:[:show, :index, :edit, :update]
     resources :posts, only:[:show, :index, :edit, :update, :destroy]
+    resources :groups, only:[:show, :index, :edit, :update, :destroy]
     get '/post/hashtag/:name' => 'posts#hashtag'
     get '/post/hashtag' => 'posts#hashtag'
   end
