@@ -14,4 +14,10 @@ class Admin::GroupsController < ApplicationController
   def update
   end
 
+  private
+
+  def group_params
+    params.require(:group).permit(:name, :introduction, :group_image, :user_id [])
+  end
+
 end
