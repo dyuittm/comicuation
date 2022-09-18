@@ -19,5 +19,9 @@ class Admin::GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:name, :introduction, :group_image, :user_id [])
   end
+  
+  def ensure_correct_admin
+    @group = Group.find(params[:id])
+  end
 
 end
