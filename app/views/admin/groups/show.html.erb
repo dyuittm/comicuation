@@ -8,6 +8,7 @@
       <% @group.users.each do |user| %>
         <li style="list-style: none;"><%= user.user_name %></li>
       <% end %>
+      <%= link_to "edit", edit_admin_group_path(@group), class: "btn btn-outline-success" %>
     </div>
   </div>
 </div>
